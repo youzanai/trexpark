@@ -1,4 +1,4 @@
-# Copyright 2020 The Youzan-AI Team. All rights reserved.
+# Copyright 2022 The Youzan-AI Team. All rights reserved.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,6 +11,12 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+
+"""
+    基于有赞的商品标题预训练模型finetune商品类目预测模型。测试数据用于验证fewshot条件下，freeze模型的预训练部分，仅仅增加一个dense层，采用少量样本进行建模的效果。
+    我们随机挑选了10个类目，以及这10个类目中的各100个商品作为训练样本，而测试数据中包含平均每个类目800+的样本。模型在eval数据集上的准确率可以达到99.5%。
+"""
 
 import numpy as np
 from transformers import (HfArgumentParser, TrainingArguments, AutoModelForSequenceClassification, AutoTokenizer,
@@ -54,12 +60,18 @@ if __name__ == '__main__':
     # eval_ds = eval_ds.select(range(10000))
 
     # 加载通过有赞商品标题预训练的bert模型
-    tokenizer = AutoTokenizer.from_pretrained("youzanai/bert-product-title-chinese")
-    train_ds = train_ds.map(lambda e: tokenizer(e['text'], truncation=True, padding='max_length'), batched=True)
-    train_ds.set_format(type='torch', columns=['input_ids', 'attention_mask', 'label'])
-    eval_ds = eval_ds.map(lambda e: tokenizer(e['text'], truncation=True, padding='max_length'), batched=True)
-    eval_ds.set_format(type='torch', columns=['input_ids', 'attention_mask', 'label'])
-    model = AutoModelForSequenceClassification.from_pretrained("youzanai/bert-product-title-chinese", num_labels=10)
+    tokenizer = AutoTokenizer.from_pretrained(
+        "youzanai/bert-product-title-chinese")
+    train_ds = train_ds.map(lambda e: tokenizer(
+        e['text'], truncation=True, padding='max_length'), batched=True)
+    train_ds.set_format(type='torch', columns=[
+                        'input_ids', 'attention_mask', 'label'])
+    eval_ds = eval_ds.map(lambda e: tokenizer(
+        e['text'], truncation=True, padding='max_length'), batched=True)
+    eval_ds.set_format(type='torch', columns=[
+                       'input_ids', 'attention_mask', 'label'])
+    model = AutoModelForSequenceClassification.from_pretrained(
+        "youzanai/bert-product-title-chinese", num_labels=10)
 
     # 冻结预训练参数
     for param in model.bert.parameters():
