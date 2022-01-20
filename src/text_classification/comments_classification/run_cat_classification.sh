@@ -1,0 +1,1 @@
+python ./comment_classification.py --output_dir=output --do_train --do_eval --overwrite_output_dir --num_train_epochs=3 --save_total_limit=1 --logging_steps=50 --per_device_train_batch_size=24 --per_device_eval_batch_size=24 --evaluation_strategy=epoch --learning_rate=1e-3
