@@ -21,7 +21,7 @@ Trexpark项目由有赞数据智能团队开源，是国内首个基于电商大
 
 目前各个开源大模型往往基于通用语料训练，而通用语料的语言模型用于特定领域的机器学习任务，往往效果不佳，或者需要对预训练模型部分进行finetune。我们的实践发现，基于电商数据finetune以后的预训练模型，能更好的学习到领域知识，并且在多项任务中，无须额外训练，或者仅仅对模型的预测部分进行训练就可以达到很好的效果。
 
-我们基于电商领域语料训练的预训练模型非常适合小样本的机器学习任务，用于解决中小电商企业和商家的fewshot难题。以商品标题分类为例，每个类目只需要100个样本，就能得到很好的分类效果，具体例子可以看[这里](https://github.com/youzanai/trexpark/blob/main/src/text_classification/title_classification.py)。
+我们基于电商领域语料训练的预训练模型非常适合小样本的机器学习任务，用于解决中小电商企业和商家的fewshot难题。以商品标题分类为例，每个类目只需要100个样本，就能得到很好的分类效果，具体例子可以看[这里](https://github.com/youzanai/trexpark/blob/main/src/text_classification/title_classification/title_classification.py)。
 
 我们的模型已经在HuggingFace的model hub上发布，想要使用我们的模型，只需要几行代码
 ```Python
