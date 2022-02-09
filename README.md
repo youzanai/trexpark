@@ -42,9 +42,11 @@ print(outputs.logits)
 ----
 
 ### 已开发模型列表
-商品标题语言模型：youzanai/bert-product-title-chinese
+商品标题语言模型：[youzanai/bert-product-title-chinese](https://huggingface.co/youzanai/bert-product-title-chinese)
 
-商品评价语言模型：youzanai/bert-product-comment-chinese
+商品评价语言模型：[youzanai/bert-product-comment-chinese](https://huggingface.co/youzanai/bert-product-comment-chinese)
+
+商品图片标题CLIP模型：[youzanai/clip-product-title-chinese](https://huggingface.co/youzanai/clip-product-title-chinese)
 
 ### 文档和帮助
 
