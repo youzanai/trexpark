@@ -20,7 +20,7 @@
 
 import numpy as np
 from transformers import (HfArgumentParser, TrainingArguments, AutoModelForSequenceClassification, AutoTokenizer,
-                          Trainer, EvalPrediction)
+                          Trainer, EvalPrediction, DataCollatorWithPadding)
 from datasets import load_dataset
 
 
@@ -70,6 +70,7 @@ if __name__ == '__main__':
         e['text'], truncation=True, padding='max_length'), batched=True)
     eval_ds.set_format(type='torch', columns=[
                        'input_ids', 'attention_mask', 'label'])
+    data_collator = DataCollatorWithPadding(tokenizer)
     model = AutoModelForSequenceClassification.from_pretrained(
         "youzanai/bert-product-title-chinese", num_labels=10)
 
@@ -83,6 +84,7 @@ if __name__ == '__main__':
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=eval_ds,
+        data_collator=data_collator,
         compute_metrics=compute_metrics
     )
     train_result = trainer.train()

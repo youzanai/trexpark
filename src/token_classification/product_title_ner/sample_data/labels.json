@@ -1,0 +1,11 @@
+{
+  "NONE": 0,
+  "B-PRD": 1,
+  "I-PRD": 2,
+  "B-BAND": 3,
+  "I-BAND": 4,
+  "B-WGT": 5,
+  "I-WGT": 6,
+  "B-CNT": 7,
+  "I-CNT": 8
+}
