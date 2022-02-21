@@ -42,10 +42,13 @@ print(outputs.logits)
 ----
 
 ### 已开发模型列表
-商品标题语言模型：youzanai/bert-product-title-chinese
+商品标题语言模型：[youzanai/bert-product-title-chinese](https://huggingface.co/youzanai/bert-product-title-chinese)
 
-商品评价语言模型：youzanai/bert-product-comment-chinese
+商品评价语言模型：[youzanai/bert-product-comment-chinese](https://huggingface.co/youzanai/bert-product-comment-chinese)
 
+收货地址语言模型：[youzanai/bert-shipping-address-chinese](https://huggingface.co/youzanai/bert-shipping-address-chinese)
+
+商品图片标题CLIP模型：[youzanai/clip-product-title-chinese](https://huggingface.co/youzanai/clip-product-title-chinese)
 ### 文档和帮助
 
 详细的使用文档我们还在编写中，大家可以先参考[src](https://github.com/youzanai/trexpark/tree/main/src)目录中的示例代码。为了让代码更容易理解，我们已经尽可能的对代码进行了精简。T'rex Park底层使用了HuggingFace的Transformer框架，关于Transformer的文档可以看[这里](https://huggingface.co/docs/transformers/quicktour)
