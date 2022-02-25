@@ -1,0 +1,10 @@
+datasets==1.18.3
+numpy==1.20.3
+pandas==1.2.4
+Pillow==8.3.1
+requests==2.26.0
+scikit_learn==1.0.2
+torch==1.8.1
+tqdm==4.62.3
+transformers==4.16.2
+seqeval==1.2
